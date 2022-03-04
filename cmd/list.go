@@ -68,13 +68,13 @@ func (opts *listOptions) listRun() {
 	}
 
 	var folderMimeType = "application/vnd.google-apps.folder"
-	var documentMimeType = "application/vnd.google-apps.document"
+	// var documentMimeType = "application/vnd.google-apps.document"
 
 	for _, file := range fileList.Files {
 		switch file.MimeType {
 		case folderMimeType:
 			opts.folders = append(opts.folders, file)
-		case documentMimeType:
+		default:
 			opts.files = append(opts.files, file)
 		}
 	}
