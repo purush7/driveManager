@@ -16,6 +16,7 @@
 
 ```bash
 ./project list 
+./project download
 
 ```
 
