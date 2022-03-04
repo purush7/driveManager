@@ -27,7 +27,7 @@ func NewDownloadCmd(fileService *drive.FilesService) *cobra.Command {
 		if os.IsNotExist(err) {
 			os.Mkdir(cwd, 0755)
 			if err != nil {
-				log.Fatalf("error while creating folder %s: %v\n", client.FolderName, err)
+				log.Printf("error while creating folder %s: %v\n", client.FolderName, err)
 			}
 		} else {
 			log.Fatalf("error while creating folder %s: %v\n", client.FolderName, err)
@@ -122,7 +122,7 @@ func (opts *downloadOpts) makeFolderStruct() {
 			if os.IsNotExist(err) {
 				os.Mkdir(path, 0755)
 				if err != nil {
-					log.Fatalf("error while creating folder %s: %v\n", folder.Name, err)
+					log.Printf("error while creating folder %s: %v\n", folder.Name, err)
 				}
 			} else {
 				log.Fatalf("error while creating folder %s: %v\n", folder.Name, err)

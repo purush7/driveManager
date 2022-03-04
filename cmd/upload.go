@@ -16,7 +16,7 @@ func NewUploadCmd(fileService *drive.FilesService) *cobra.Command {
 	var uploadCmd = &cobra.Command{
 		Use:   "upload",
 		Short: "uploads the folder in google cloud bucket",
-		Long:  `ploads the folder in google cloud bucket`,
+		Long:  `uploads the folder in google cloud bucket`,
 		Run: func(cmd *cobra.Command, args []string) {
 			uploadRun()
 		},
