@@ -22,17 +22,25 @@ func NewDownloadCmd(fileService *drive.FilesService) *cobra.Command {
 		log.Fatalln("error while getting current working directory")
 	}
 	cwd = filepath.Join(cwd, client.FolderName)
-	err = os.Mkdir(cwd, 0755)
-	if err != nil {
-		log.Fatalf("error while creating folder %s\n", client.FolderName)
+
+	if _, err := os.Stat(cwd); err != nil {
+		if os.IsNotExist(err) {
+			os.Mkdir(cwd, 0755)
+			if err != nil {
+				log.Fatalf("error while creating folder %s: %v\n", client.FolderName, err)
+			}
+		} else {
+			log.Fatalf("error while creating folder %s: %v\n", client.FolderName, err)
+		}
 	}
+
 	var opts = newDownloadOpts(fileService, client.FolderID, cwd)
 
 	// downloadCmd represents the download command
 	var downloadCmd = &cobra.Command{
 		Use:   "download",
-		Short: "",
-		Long:  ``,
+		Short: "command to download the folder in google drive",
+		Long:  `command to download the folder in google drive`,
 		Run: func(cmd *cobra.Command, args []string) {
 			opts.downloadFolder()
 		},
@@ -110,9 +118,15 @@ func (opts *downloadOpts) downloadFileCall() {
 func (opts *downloadOpts) makeFolderStruct() {
 	for _, folder := range opts.folders {
 		path := filepath.Join(opts.cwd, folder.Name)
-		err := os.Mkdir(path, 0755)
-		if err != nil {
-			log.Fatalf("error while creating folder %s\n", folder.Name)
+		if _, err := os.Stat(path); err != nil {
+			if os.IsNotExist(err) {
+				os.Mkdir(path, 0755)
+				if err != nil {
+					log.Fatalf("error while creating folder %s: %v\n", folder.Name, err)
+				}
+			} else {
+				log.Fatalf("error while creating folder %s: %v\n", folder.Name, err)
+			}
 		}
 	}
 
