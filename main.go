@@ -7,7 +7,7 @@ package main
 import (
 	"log"
 
-	"github.com/purush7/project/cmd"
+	"github.com/purush7/driveManager/cmd"
 )
 
 func main() {

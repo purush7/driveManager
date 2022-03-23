@@ -1,4 +1,4 @@
-module github.com/purush7/project
+module github.com/purush7/driveManager
 
 go 1.16
 

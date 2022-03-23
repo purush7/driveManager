@@ -9,7 +9,7 @@ import (
 	"io/ioutil"
 	"log"
 
-	"github.com/purush7/project/client"
+	"github.com/purush7/driveManager/client"
 	"github.com/spf13/cobra"
 	"golang.org/x/oauth2/google"
 	"google.golang.org/api/drive/v3"
@@ -18,7 +18,7 @@ import (
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "project",
+	Use:   "driveManager",
 	Short: "Simple application which helps in viewing and downloading files on drive",
 	Long:  `Simple application which helps in viewing and downloading files on drive`,
 }

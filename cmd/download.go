@@ -10,7 +10,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/purush7/project/client"
+	"github.com/purush7/driveManager/client"
 	"github.com/spf13/cobra"
 	"google.golang.org/api/drive/v3"
 )
