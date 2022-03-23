@@ -15,8 +15,8 @@
 ### Commands:
 
 ```bash
-./project list 
-./project download
+./driveManager list 
+./driveManager download
 
 ```
 
