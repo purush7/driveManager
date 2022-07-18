@@ -13,7 +13,7 @@ import (
 
 func NewUploadCmd(fileService *drive.FilesService) *cobra.Command {
 	// uploadCmd represents the upload command
-	var uploadCmd = &cobra.Command{
+	uploadCmd := &cobra.Command{
 		Use:   "upload",
 		Short: "uploads the folder in google cloud bucket",
 		Long:  `uploads the folder in google cloud bucket`,
@@ -26,7 +26,6 @@ func NewUploadCmd(fileService *drive.FilesService) *cobra.Command {
 }
 
 func init() {
-
 }
 
 func uploadRun() {

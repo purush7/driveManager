@@ -15,8 +15,8 @@ import (
 
 func NewListCmd(fileService *drive.FilesService) *cobra.Command {
 	// listCmd represents the list command
-	var opts = newListOpts(fileService, client.FolderID)
-	var listCmd = &cobra.Command{
+	opts := newListOpts(fileService, client.FolderID)
+	listCmd := &cobra.Command{
 		Use:   "list",
 		Short: "lists the contents of the folder",
 		Long:  `ists the contents of the folder`,
@@ -30,7 +30,6 @@ func NewListCmd(fileService *drive.FilesService) *cobra.Command {
 }
 
 func init() {
-
 	// Here you will define your flags and configuration settings.
 
 	// Cobra supports Persistent Flags which will work for this command
@@ -53,7 +52,6 @@ func newListOpts(fileService *drive.FilesService, folderID string) *listOptions 
 }
 
 func (opts *listOptions) listRun() {
-
 	filesListCall := opts.fileService.List()
 	listQuery := fmt.Sprintf(`'%s' in parents`, opts.folderID)
 
@@ -67,7 +65,7 @@ func (opts *listOptions) listRun() {
 		return
 	}
 
-	var folderMimeType = "application/vnd.google-apps.folder"
+	folderMimeType := "application/vnd.google-apps.folder"
 	// var documentMimeType = "application/vnd.google-apps.document"
 
 	for _, file := range fileList.Files {

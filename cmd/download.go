@@ -16,7 +16,6 @@ import (
 )
 
 func NewDownloadCmd(fileService *drive.FilesService) *cobra.Command {
-
 	cwd, err := os.Getwd()
 	if err != nil {
 		log.Fatalln("error while getting current working directory")
@@ -34,10 +33,10 @@ func NewDownloadCmd(fileService *drive.FilesService) *cobra.Command {
 		}
 	}
 
-	var opts = newDownloadOpts(fileService, client.FolderID, cwd)
+	opts := newDownloadOpts(fileService, client.FolderID, cwd)
 
 	// downloadCmd represents the download command
-	var downloadCmd = &cobra.Command{
+	downloadCmd := &cobra.Command{
 		Use:   "download",
 		Short: "command to download the folder in google drive",
 		Long:  `command to download the folder in google drive`,
@@ -47,7 +46,6 @@ func NewDownloadCmd(fileService *drive.FilesService) *cobra.Command {
 	}
 
 	return downloadCmd
-
 }
 
 func newDownloadOpts(fileService *drive.FilesService, folderID, cwd string) *downloadOpts {
@@ -63,7 +61,6 @@ type downloadOpts struct {
 func init() {}
 
 func (opts *downloadOpts) downloadFolder() {
-
 	opts.listRun()
 	opts.makeFolderStruct()
 	opts.downloadFiles()
@@ -83,7 +80,6 @@ func (opts *downloadOpts) downloadFiles() {
 }
 
 func (opts *downloadOpts) downloadFileCall() {
-
 	fid := opts.folderID
 	resp, err := opts.fileService.Export(fid, `text/plain`).Download()
 	if err != nil {
@@ -112,7 +108,6 @@ func (opts *downloadOpts) downloadFileCall() {
 		log.Fatal(err)
 	}
 	log.Printf("Wrote %d bytes into %s.\n", bytesWritten, opts.cwd)
-
 }
 
 func (opts *downloadOpts) makeFolderStruct() {
